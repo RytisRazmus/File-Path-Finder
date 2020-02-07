@@ -5,26 +5,33 @@ import com.razmus.daugiagijispirmas.Interface.ProgressChecker;
 
 public class Progress implements Runnable {
 
-    private final SearchProgress search;
+    private final SearchData search;
     private ProgressChecker callback;
-    private int oldValue = 0;
+    private int oldProgressValue = 0;
+    private String oldDirName = "";
 
-    public Progress(SearchProgress search, ProgressChecker callback){
+    public Progress(SearchData search, ProgressChecker callback){
         this.search = search;
         this.callback = callback;
     }
 
     public void reset(){
-        oldValue = 0;
+        oldProgressValue = 0;
+        oldDirName = "";
     }
 
     @Override
     public void run() {
 
         while ( !search.finished ) {
-            if (oldValue != search.progress) {
+            if (oldProgressValue != search.progress) {
                 callback.setCurrentProgress(search.progress);
-                oldValue = search.progress;
+                oldProgressValue = search.progress;
+            }
+
+            if (oldDirName != search.dirName){
+                callback.fileFound(search.dirName);
+                oldDirName = search.dirName;
             }
         }
 

@@ -6,7 +6,7 @@ import com.razmus.daugiagijispirmas.Interface.Searcher;
 
 public class FileFinder {
 
-    private final SearchProgress search = new SearchProgress();
+    private final SearchData search = new SearchData();
     private FileFetcher mFileFetcher;
     private Progress mProgress;
     private Thread finderThred;

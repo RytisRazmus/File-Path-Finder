@@ -8,7 +8,7 @@ import java.io.File;
 
 public class FileFetcher implements Runnable {
 
-    private final SearchProgress search;
+    private final SearchData search;
     private Searcher callback;
     private String directoryName = "";
     private String searchedName = "";
@@ -16,7 +16,7 @@ public class FileFetcher implements Runnable {
     private String defaultDir = "";
 
 
-    public FileFetcher(SearchProgress search, Searcher callback) {
+    public FileFetcher(SearchData search, Searcher callback) {
         this.search = search;
         this.callback = callback;
     }
@@ -83,7 +83,7 @@ public class FileFetcher implements Runnable {
                         search.progress++;
                     }
                 } else if (fileName.contains(searchedName)) { // file found
-                    callback.fileFound(directoryName + "/" + fileName);
+                    search.dirName = directoryName + "/" + fileName;
                 }
 
             }
