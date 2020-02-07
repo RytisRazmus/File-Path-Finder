@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements Searcher, Progres
 
                 String dirName = dirSearchEditText.getText().toString();
                 String fileName = fileSearchEditText.getText().toString();
-                finder.test(dirName, fileName);
+                finder.search(dirName, fileName);
             }
         };
         thread.start();
@@ -131,7 +131,6 @@ public class MainActivity extends AppCompatActivity implements Searcher, Progres
             public void run() {
                 results.add(name);
                 directoryAdapter.notifyDataSetChanged();
-                Log.d("filefound", name);
             }
         });
     }
@@ -142,7 +141,6 @@ public class MainActivity extends AppCompatActivity implements Searcher, Progres
             @Override
             public void run() {
                 progressSeekBar.setProgress(progressValue);
-                Log.d("threadEnd", "setting value " + progressSeekBar.getMax() + " " + progressSeekBar.getProgress());
             }
         });
     }

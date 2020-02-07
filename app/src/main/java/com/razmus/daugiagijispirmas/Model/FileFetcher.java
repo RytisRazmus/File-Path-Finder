@@ -1,13 +1,12 @@
 package com.razmus.daugiagijispirmas.Model;
 
 import android.os.Environment;
-import android.util.Log;
 
 import com.razmus.daugiagijispirmas.Interface.Searcher;
 
 import java.io.File;
 
-public class Finder implements Runnable {
+public class FileFetcher implements Runnable {
 
     private final SearchProgress search;
     private Searcher callback;
@@ -17,7 +16,7 @@ public class Finder implements Runnable {
     private String defaultDir = "";
 
 
-    public Finder(SearchProgress search, Searcher callback) {
+    public FileFetcher(SearchProgress search, Searcher callback) {
         this.search = search;
         this.callback = callback;
     }
@@ -48,7 +47,7 @@ public class Finder implements Runnable {
         search.finished = true;
 
     }
-
+    // I hate this
     private void setMaxProgress() throws Exception {
         File[] files = getFiles(directoryName);
         for (File file : files) {
@@ -77,15 +76,13 @@ public class Finder implements Runnable {
 
                 String fileName = files[i].getName();
 
-                if (files[i].isDirectory()) {
+                if (files[i].isDirectory()) { // check if file is a directory
                     String newPath = directoryName + "/" + files[i].getName();
                     findFile(newPath, searchedName);
                     if (directoryName.equals(defaultDir)) {
                         search.progress++;
-                        Log.d("directory", newPath + " size: " + dirCount);
                     }
-                } else if (fileName.contains(searchedName)) {
-                    Log.d("foundFile", directoryName);
+                } else if (fileName.contains(searchedName)) { // file found
                     callback.fileFound(directoryName + "/" + fileName);
                 }
 
