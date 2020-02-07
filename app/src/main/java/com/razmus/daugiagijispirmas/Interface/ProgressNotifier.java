@@ -1,6 +1,6 @@
 package com.razmus.daugiagijispirmas.Interface;
 
-public interface ProgressChecker {
+public interface ProgressNotifier {
     void setCurrentProgress(int progressValue);
     void fileFound(String name);
 }

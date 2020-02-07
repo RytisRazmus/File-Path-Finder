@@ -18,13 +18,13 @@ import android.widget.Toast;
 
 import com.razmus.daugiagijispirmas.Adapters.DirectoryAdapter;
 import com.razmus.daugiagijispirmas.Interface.Searcher;
-import com.razmus.daugiagijispirmas.Model.FileFinder;
-import com.razmus.daugiagijispirmas.Interface.ProgressChecker;
+import com.razmus.daugiagijispirmas.Model.SearchHandler;
+import com.razmus.daugiagijispirmas.Interface.ProgressNotifier;
 
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity implements Searcher, ProgressChecker {
+public class MainActivity extends AppCompatActivity implements Searcher, ProgressNotifier {
 
     private final int REQUEST_CODE = 1;
     private RecyclerView searchResultsRecycler;
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements Searcher, Progres
     private Button searchButton;
     private SeekBar progressSeekBar;
     private DirectoryAdapter directoryAdapter;
-    private FileFinder finder = new FileFinder(this, this);
+    private SearchHandler finder = new SearchHandler(this, this);
     private ArrayList<String> results = new ArrayList<>();
 
     @Override

@@ -74,7 +74,6 @@ public class FileFetcher implements Runnable {
         if (files != null) {
             for (int i = 0; i < files.length; i++) {
 
-
                 String fileName = files[i].getName();
                 String newPath = directoryName + "/" + fileName;
                 if (files[i].isDirectory()) { // check if file is a directory
@@ -86,13 +85,8 @@ public class FileFetcher implements Runnable {
                     search.dirName = newPath;
                 }
 
-
             }
         }
-    }
-
-    private void checkFiles(File file) throws Exception{
-
     }
 
 }

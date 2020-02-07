@@ -1,16 +1,16 @@
 package com.razmus.daugiagijispirmas.Model;
 
 
-import com.razmus.daugiagijispirmas.Interface.ProgressChecker;
+import com.razmus.daugiagijispirmas.Interface.ProgressNotifier;
 
-public class Progress implements Runnable {
+public class ProgressObserver implements Runnable {
 
     private final SearchData search;
-    private ProgressChecker callback;
+    private ProgressNotifier callback;
     private int oldProgressValue = 0;
     private String oldDirName = "";
 
-    public Progress(SearchData search, ProgressChecker callback){
+    public ProgressObserver(SearchData search, ProgressNotifier callback){
         this.search = search;
         this.callback = callback;
     }
