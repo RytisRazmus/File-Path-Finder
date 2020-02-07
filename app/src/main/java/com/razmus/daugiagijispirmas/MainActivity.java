@@ -18,14 +18,14 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.razmus.daugiagijispirmas.Adapters.DirectoryAdapter;
-import com.razmus.daugiagijispirmas.Interface.ThreadFinished;
+import com.razmus.daugiagijispirmas.Interface.Searcher;
 import com.razmus.daugiagijispirmas.Model.FileFinder;
 import com.razmus.daugiagijispirmas.Interface.ProgressChecker;
 
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity implements ThreadFinished, ProgressChecker {
+public class MainActivity extends AppCompatActivity implements Searcher, ProgressChecker {
 
     private final int REQUEST_CODE = 1;
     private RecyclerView searchResultsRecycler;

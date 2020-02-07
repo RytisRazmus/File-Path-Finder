@@ -3,21 +3,21 @@ package com.razmus.daugiagijispirmas.Model;
 import android.os.Environment;
 import android.util.Log;
 
-import com.razmus.daugiagijispirmas.Interface.ThreadFinished;
+import com.razmus.daugiagijispirmas.Interface.Searcher;
 
 import java.io.File;
 
 public class Finder implements Runnable {
 
     private final SearchProgress search;
-    private ThreadFinished callback;
+    private Searcher callback;
     private String directoryName = "";
     private String searchedName = "";
     private int dirCount = 0;
     private String defaultDir = "";
 
 
-    public Finder(SearchProgress search, ThreadFinished callback) {
+    public Finder(SearchProgress search, Searcher callback) {
         this.search = search;
         this.callback = callback;
     }

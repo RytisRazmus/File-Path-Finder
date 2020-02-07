@@ -1,7 +1,7 @@
 package com.razmus.daugiagijispirmas.Model;
 
 import com.razmus.daugiagijispirmas.Interface.ProgressChecker;
-import com.razmus.daugiagijispirmas.Interface.ThreadFinished;
+import com.razmus.daugiagijispirmas.Interface.Searcher;
 
 
 public class FileFinder {
@@ -12,7 +12,7 @@ public class FileFinder {
     private Thread finderThred;
     private Thread progressThread;
 
-    public FileFinder(ThreadFinished callback, ProgressChecker progressChecker){
+    public FileFinder(Searcher callback, ProgressChecker progressChecker){
         finder = new Finder(search, callback);
         progress = new Progress(search, progressChecker);
     }

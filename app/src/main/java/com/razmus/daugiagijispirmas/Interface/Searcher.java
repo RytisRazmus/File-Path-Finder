@@ -1,7 +1,6 @@
 package com.razmus.daugiagijispirmas.Interface;
 
-public interface ThreadFinished {
+public interface Searcher {
     void fileFound(String name);
     void setMaxProgress(int maxProgress);
-
 }
