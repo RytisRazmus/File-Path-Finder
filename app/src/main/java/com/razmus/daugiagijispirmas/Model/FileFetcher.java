@@ -23,7 +23,6 @@ public class FileFetcher implements Runnable {
 
     public void reset() {
         dirCount = 0;
-        defaultDir = "";
     }
 
 
@@ -38,7 +37,7 @@ public class FileFetcher implements Runnable {
 
         try {
             setMaxProgress();
-            findFile(directoryName, searchedName);
+            findFile(directoryName);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -68,26 +67,32 @@ public class FileFetcher implements Runnable {
         return files;
     }
 
-    public void findFile(String directoryName, String searchedName) throws Exception {
+    public void findFile(String directoryName) throws Exception {
 
         File[] files = getFiles(directoryName);
+
         if (files != null) {
             for (int i = 0; i < files.length; i++) {
 
-                String fileName = files[i].getName();
 
+                String fileName = files[i].getName();
+                String newPath = directoryName + "/" + fileName;
                 if (files[i].isDirectory()) { // check if file is a directory
-                    String newPath = directoryName + "/" + files[i].getName();
-                    findFile(newPath, searchedName);
-                    if (directoryName.equals(defaultDir)) {
+                    findFile(newPath);
+                    if (directoryName.equals(defaultDir)) { // if true this means recursion is back to the main directory
                         search.progress++;
                     }
                 } else if (fileName.contains(searchedName)) { // file found
-                    search.dirName = directoryName + "/" + fileName;
+                    search.dirName = newPath;
                 }
+
 
             }
         }
+    }
+
+    private void checkFiles(File file) throws Exception{
+
     }
 
 }
