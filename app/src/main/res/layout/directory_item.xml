@@ -6,7 +6,9 @@
 
     <TextView
         android:id="@+id/direcotryTextView"
+        android:padding="4dp"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/app_name" />
 </LinearLayout>

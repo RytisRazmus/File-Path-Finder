@@ -1,5 +1,5 @@
 package com.razmus.daugiagijispirmas.Model;
-
+@SuppressWarnings("WeakerAccess")
 public class SearchData {
 
     public volatile int progress = 0;

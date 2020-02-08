@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Daugiagijis Pirmas</string>
     <string name="serachButton">Ieškoti</string>
-    <string name="searchFileName">Įveskite failo pavadinimą</string>
-    <string name="searchDirName">Įveskite Katalogo pavadinimą</string>
+    <string name="searchFileName">Failo/Katalogo Pavadinimas</string>
+    <string name="searchDirName">Pradžios Katalogas</string>
+    <string name="elapsedTime">0s</string>
 </resources>

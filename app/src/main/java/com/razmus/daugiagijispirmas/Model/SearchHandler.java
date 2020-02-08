@@ -7,21 +7,21 @@ import com.razmus.daugiagijispirmas.Interface.Searcher;
 public class SearchHandler {
 
     private final SearchData search = new SearchData();
-    private FileFetcher mFileFetcher;
-    private ProgressObserver mProgressObserver;
+    private FileFinder fileFinder;
+    private ProgressObserver progressObserver;
     private Thread finderThread;
     private Thread progressThread;
 
     public SearchHandler(Searcher callback, ProgressNotifier progressNotifier) {
-        mFileFetcher = new FileFetcher(search, callback);
-        mProgressObserver = new ProgressObserver(search, progressNotifier);
+        fileFinder = new FileFinder(search, callback);
+        progressObserver = new ProgressObserver(search, progressNotifier);
     }
 
     public void search(String directoryName, String searchedName) {
         reset();
-        mFileFetcher.setSearchParameters(directoryName, searchedName);
-        finderThread = new Thread(mFileFetcher);
-        progressThread = new Thread(mProgressObserver);
+        fileFinder.setSearchParameters(directoryName, searchedName);
+        finderThread = new Thread(fileFinder);
+        progressThread = new Thread(progressObserver);
         finderThread.start();
         progressThread.start();
     }
@@ -31,8 +31,7 @@ public class SearchHandler {
             finderThread.interrupt();
             progressThread.interrupt();
         }
-        mFileFetcher.reset();
-        mProgressObserver.reset();
+        progressObserver.reset();
         search.reset();
     }
 

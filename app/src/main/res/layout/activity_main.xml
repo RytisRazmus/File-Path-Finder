@@ -4,17 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/searchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
+        android:textColor="@color/white"
         android:layout_marginEnd="8dp"
         android:text="@string/serachButton"
         app:layout_constraintBottom_toBottomOf="@+id/dirSearchEditText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fileSearchEditText" />
+        app:layout_constraintTop_toTopOf="@+id/dirSearchEditText" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/serachrecycler"
@@ -29,9 +32,12 @@
         app:layout_constraintTop_toBottomOf="@+id/progresSeekBar" />
 
     <EditText
+        android:importantForAutofill="no"
         android:id="@+id/fileSearchEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edit_text"
+        android:padding="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/searchFileName"
@@ -41,15 +47,18 @@
         app:layout_constraintTop_toBottomOf="@+id/dirSearchEditText" />
 
     <EditText
+        android:importantForAutofill="no"
         android:id="@+id/dirSearchEditText"
         android:layout_width="0dp"
+        android:background="@drawable/rounded_edit_text"
+        android:padding="8dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="@string/searchDirName"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toStartOf="@+id/searchButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -62,4 +71,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fileSearchEditText" />
+
+    <TextView
+        android:id="@+id/timeTextView"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_width="0dp"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:text="@string/elapsedTime"
+        app:layout_constraintBottom_toBottomOf="@+id/fileSearchEditText"
+        app:layout_constraintEnd_toEndOf="@+id/searchButton"
+        app:layout_constraintStart_toStartOf="@+id/searchButton"
+        app:layout_constraintTop_toBottomOf="@+id/searchButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
