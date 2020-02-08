@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements Searcher, Progres
     }
 
     private void startTimer() {
+        stopTimer();
         timer = new Timer();
         long interval = 100;
         startTime = System.currentTimeMillis();
@@ -133,8 +134,10 @@ public class MainActivity extends AppCompatActivity implements Searcher, Progres
     }
 
     private void stopTimer() {
-        timer.cancel();
-        timer = null;
+        if (timer != null) {
+            timer.cancel();
+            timer = null;
+        }
     }
 
     private void setTimeTextViewText() {
@@ -153,10 +156,6 @@ public class MainActivity extends AppCompatActivity implements Searcher, Progres
     }
 
     private void addResult(String name) {
-        if (name.equals("")) {
-            name = "/";
-        }
-
         results.add(0, name);
         directoryAdapter.notifyDataSetChanged();
     }
@@ -172,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements Searcher, Progres
 
     @Override
     public void fileFound(final String name) {
-        Log.d("reultatas", name);
+        Log.d("rezultatas", name);
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {

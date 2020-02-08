@@ -24,6 +24,9 @@ public class FileFinder implements Runnable {
     public void setSearchParameters(String directoryName, String searchedName) {
         startingDir = directoryName;
         this.searchedName = searchedName;
+        if (!directoryName.equals("") && !directoryName.equals("/")) {
+            startingDir += "/";
+        }
     }
 
     @Override
@@ -54,10 +57,9 @@ public class FileFinder implements Runnable {
     private File[] getFiles(String directoryName) throws Exception {
         String path = Environment.getExternalStorageDirectory().toString() + directoryName;
         File directory = new File(path);
-
         File[] files = directory.listFiles();
         if (files == null) {
-            throw new Exception("No such directory");
+            throw new Exception("No such directory " + path);
         }
         return files;
     }
